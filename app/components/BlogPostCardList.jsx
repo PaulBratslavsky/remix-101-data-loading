@@ -1,8 +1,6 @@
 import { Link } from "@remix-run/react"
 
-
 function BlogPostCard({ data }) {
-  console.log(data)
   const { title, date, image, content, slug } = data;
   return (
     <div className="w-full md:w-1/2 px-4 mb-16">

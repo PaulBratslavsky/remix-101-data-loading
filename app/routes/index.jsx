@@ -1,19 +1,15 @@
+import BlogPostCardList from "~/components/BlogPostCardList";
+import { getPosts } from "~/api/get-posts.server.js" 
 import { useLoaderData } from '@remix-run/react';
 import { json } from "@remix-run/node";
-import { getPosts } from "~/api/get-posts.server.js";
 
-import BlogPostCardList from "~/components/BlogPostCardList";
-
-export async function loader() {
+export function loader() {
   const data = getPosts();
-  return json({
-    data: data,
-  })
+  return json(data);
 }
 
 export default function Index() {
-  const { data }  = useLoaderData();
+  const data = useLoaderData();
 
-  console.log(data)
   return <BlogPostCardList data={data} />;
 }
